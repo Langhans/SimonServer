@@ -165,7 +165,7 @@ public class TimServer  implements ITimServer {
 	    throw new IllegalArgumentException("File parent may not be null!");
 	  }
 	  // TODO just for testing in ECLIPSE!!! ELSE COMMENT LINE!!!
-	  parent = new File("pics/pics2");
+	  //parent = new File("pics/pics2");
 	  
     File[] fs;
     if (parent.isDirectory()) {
@@ -191,9 +191,10 @@ public class TimServer  implements ITimServer {
       files.add(parent);
       return files;
 
-    } else {
-      // TODO error exception???
-    }
+    } 
+//    else {
+//      // TODO error exception???
+//    }
     return null;
   }
 
@@ -208,10 +209,10 @@ public class TimServer  implements ITimServer {
    */
 	
 	public static String findSource(Class<?> clazz) {
-    String resourceToSearch = '/' + clazz.getName().replace(".", "/") + ".class";
-    java.net.URL location = clazz.getResource(resourceToSearch);
+    String resourcesPath = '/' + clazz.getName().replace(".", "/") + ".class";
+    java.net.URL location = clazz.getResource(resourcesPath);
     String sourcePath = location.getPath();
-    // Optional, Remove junk
-    return sourcePath.replace("file:", "").replace("!" + resourceToSearch, "");
+    String finalPath = sourcePath.replace("file:", "").replace("!" + resourcesPath, "");
+    return finalPath;
 	}
 }
